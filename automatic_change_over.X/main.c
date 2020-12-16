@@ -108,6 +108,14 @@ void main(void) {
             else if(cDANGER==0)cON();
             else OFF();
         }
+        
+        ADCON0bits.CHS=3;
+        ADCON0bits.GO_nDONE=1;
+        while(ADCON0bits.GO_nDONE);
+        current=(ADRESH<<8)+ADRESL;
+        __delay_us(20);
+        
+        
         RE0=1;
         __delay_ms(10);
         RE0=0;
