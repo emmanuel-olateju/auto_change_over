@@ -3,36 +3,56 @@
 [d edition pro ]
 [d chip 16F877A ]
 [d frameptr 0 ]
+"4 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X/lcd.h
+[v _Lcd_Port Lcd_Port `(v  1 e 1 0 ]
+"26
+[v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
+"35
+[v _Lcd_Clear Lcd_Clear `(i  1 e 2 0 ]
+"41
+[v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
+"62
+[v _Lcd_Init Lcd_Init `(v  1 e 1 0 ]
+"81
+[v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
+"97
+[v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
 "6 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\pic\__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"43 C:\Users\peTron_Quantinity\Documents\engineering growth\extracurriculars\projects\automatic_change_over.X\main.c
+"54 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"125
+"167
 [v _aON aON `(v  1 e 1 0 ]
-"130
+"172
 [v _bON bON `(v  1 e 1 0 ]
-"135
+"177
 [v _cON cON `(v  1 e 1 0 ]
-"140
+"182
 [v _OFF OFF `(v  1 e 1 0 ]
 "216 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"340
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
 "1152
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
-[s S46 . 1 `uc 1 ADON 1 0 :1:0 
+[s S58 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 GO_nDONE 1 0 :1:2 
 `uc 1 CHS 1 0 :3:3 
 `uc 1 ADCS 1 0 :2:6 
 ]
 "1190
-[s S52 . 1 `uc 1 . 1 0 :2:0 
+[s S64 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 GO 1 0 :1:2 
 `uc 1 CHS0 1 0 :1:3 
 `uc 1 CHS1 1 0 :1:4 
@@ -40,33 +60,35 @@
 `uc 1 ADCS0 1 0 :1:6 
 `uc 1 ADCS1 1 0 :1:7 
 ]
-[s S60 . 1 `uc 1 . 1 0 :2:0 
+[s S72 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nDONE 1 0 :1:2 
 ]
-[s S63 . 1 `uc 1 . 1 0 :2:0 
+[s S75 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 GO_DONE 1 0 :1:2 
 ]
-[u S66 . 1 `S46 1 . 1 0 `S52 1 . 1 0 `S60 1 . 1 0 `S63 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES66  1 e 1 @31 ]
+[u S78 . 1 `S58 1 . 1 0 `S64 1 . 1 0 `S72 1 . 1 0 `S75 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES78  1 e 1 @31 ]
 "1325
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1375
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1499
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "2222
 [v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
-[s S22 . 1 `uc 1 PCFG 1 0 :4:0 
+[s S34 . 1 `uc 1 PCFG 1 0 :4:0 
 `uc 1 . 1 0 :2:4 
 `uc 1 ADCS2 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "2248
-[s S27 . 1 `uc 1 PCFG0 1 0 :1:0 
+[s S39 . 1 `uc 1 PCFG0 1 0 :1:0 
 `uc 1 PCFG1 1 0 :1:1 
 `uc 1 PCFG2 1 0 :1:2 
 `uc 1 PCFG3 1 0 :1:3 
 ]
-[u S32 . 1 `S22 1 . 1 0 `S27 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES32  1 e 1 @159 ]
+[u S44 . 1 `S34 1 . 1 0 `S39 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES44  1 e 1 @159 ]
 "2674
 [v _RB0 RB0 `VEb  1 e 0 @48 ]
 "2677
@@ -83,36 +105,149 @@
 [v _RB6 RB6 `VEb  1 e 0 @54 ]
 "2695
 [v _RB7 RB7 `VEb  1 e 0 @55 ]
+"2752
+[v _RD1 RD1 `VEb  1 e 0 @65 ]
+"2758
+[v _RD3 RD3 `VEb  1 e 0 @67 ]
+"2761
+[v _RD4 RD4 `VEb  1 e 0 @68 ]
+"2764
+[v _RD5 RD5 `VEb  1 e 0 @69 ]
+"2767
+[v _RD6 RD6 `VEb  1 e 0 @70 ]
+"2770
+[v _RD7 RD7 `VEb  1 e 0 @71 ]
 "2773
 [v _RE0 RE0 `VEb  1 e 0 @72 ]
 "3007
 [v _TRISE0 TRISE0 `VEb  1 e 0 @1096 ]
-"23 C:\Users\peTron_Quantinity\Documents\engineering growth\extracurriculars\projects\automatic_change_over.X\main.c
+"31 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
 [v _aVOLTAGE aVOLTAGE `i  1 e 2 0 ]
 [v _bVOLTAGE bVOLTAGE `i  1 e 2 0 ]
 [v _cVOLTAGE cVOLTAGE `i  1 e 2 0 ]
+"41
+[v _voltage voltage `i  1 e 2 0 ]
+[v _current current `i  1 e 2 0 ]
+[v _power power `i  1 e 2 0 ]
+"42
+[v _max_current max_current `i  1 e 2 0 ]
 "43
+[v _min_current min_current `i  1 e 2 0 ]
+"54
 [v _main main `(v  1 e 1 0 ]
 {
-"123
+"134
+[v main@i i `i  1 a 2 0 ]
+"165
 } 0
-"135
+"177
 [v _cON cON `(v  1 e 1 0 ]
 {
-"139
+"181
 } 0
-"130
+"172
 [v _bON bON `(v  1 e 1 0 ]
 {
-"134
+"176
 } 0
-"125
+"167
 [v _aON aON `(v  1 e 1 0 ]
 {
-"129
+"171
 } 0
-"140
+"15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
+} 0
+"182 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
 [v _OFF OFF `(v  1 e 1 0 ]
 {
-"144
+"186
+} 0
+"97 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X/lcd.h
+[v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
+{
+[v Lcd_Write_String@a a `*.24uc  1 a 1 wreg ]
+"99
+[v Lcd_Write_String@i i `i  1 a 2 5 ]
+"97
+[v Lcd_Write_String@a a `*.24uc  1 a 1 wreg ]
+"100
+[v Lcd_Write_String@a a `*.24uc  1 a 1 7 ]
+"102
+} 0
+"81
+[v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
+{
+[v Lcd_Write_Char@a a `uc  1 a 1 wreg ]
+"83
+[v Lcd_Write_Char@y y `uc  1 a 1 3 ]
+[v Lcd_Write_Char@temp temp `uc  1 a 1 2 ]
+"81
+[v Lcd_Write_Char@a a `uc  1 a 1 wreg ]
+"84
+[v Lcd_Write_Char@a a `uc  1 a 1 4 ]
+"95
+} 0
+"41
+[v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
+{
+[v Lcd_Set_Cursor@a a `uc  1 a 1 wreg ]
+"43
+[v Lcd_Set_Cursor@temp temp `uc  1 a 1 10 ]
+[v Lcd_Set_Cursor@y y `uc  1 a 1 9 ]
+[v Lcd_Set_Cursor@z z `uc  1 a 1 8 ]
+"41
+[v Lcd_Set_Cursor@a a `uc  1 a 1 wreg ]
+[v Lcd_Set_Cursor@b b `uc  1 p 1 4 ]
+"44
+[v Lcd_Set_Cursor@a a `uc  1 a 1 7 ]
+"60
+} 0
+"62
+[v _Lcd_Init Lcd_Init `(v  1 e 1 0 ]
+{
+"79
+} 0
+"35
+[v _Lcd_Clear Lcd_Clear `(i  1 e 2 0 ]
+{
+"39
+} 0
+"26
+[v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
+{
+[v Lcd_Cmd@a a `uc  1 a 1 wreg ]
+[v Lcd_Cmd@a a `uc  1 a 1 wreg ]
+"28
+[v Lcd_Cmd@a a `uc  1 a 1 3 ]
+"33
+} 0
+"4
+[v _Lcd_Port Lcd_Port `(v  1 e 1 0 ]
+{
+[v Lcd_Port@a a `uc  1 a 1 wreg ]
+[v Lcd_Port@a a `uc  1 a 1 wreg ]
+"6
+[v Lcd_Port@a a `uc  1 a 1 0 ]
+"25
 } 0

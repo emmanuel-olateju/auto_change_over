@@ -19,6 +19,14 @@
 
 #include <xc.h>
 #define _XTAL_FREQ 20000000
+#define RS RD1
+#define RW RD2
+#define EN RD3
+#define D4 RD4
+#define D5 RD5
+#define D6 RD6
+#define D7 RD7
+#include "lcd.h"
 
 int aVOLTAGE,bVOLTAGE,cVOLTAGE; /*aVOLTAGE on RA0
                                  *bVOLTAGE on RA1
@@ -31,6 +39,8 @@ int aVOLTAGE,bVOLTAGE,cVOLTAGE; /*aVOLTAGE on RA0
 #define bDANGER RB1
 #define cDANGER RB2
 int voltage, current, power;
+int max_current=0;
+int min_current=0;
 #define mid_thresh 512
 #define max_power RB6
 #define power_saving RB7
@@ -39,6 +49,7 @@ void aON();
 void bON();
 void cON();
 void OFF();
+void update_current(int *current, int *max_current, int *min_current);
 
 void main(void) {
     ADCON1bits.ADFM=1;
@@ -55,6 +66,15 @@ void main(void) {
     PORTB=0x00;
     TRISE0=0;
     RE0=0;
+    TRISD=0x00;
+    PORTD=0x00;
+    Lcd_Init();
+    Lcd_Set_Cursor(1,5);
+    Lcd_Write_String("Aeon-Atk");
+    Lcd_Set_Cursor(2,1);
+    __delay_ms(1000);
+    Lcd_Write_String("auto phase sysm");
+    __delay_ms(2000);
     
     while(1){
         //hotlist high or low voltage
@@ -109,12 +129,32 @@ void main(void) {
             else OFF();
         }
         
+        //sample acs712 output to get maximum current and calculate power consumption from that
         ADCON0bits.CHS=3;
-        ADCON0bits.GO_nDONE=1;
-        while(ADCON0bits.GO_nDONE);
-        current=(ADRESH<<8)+ADRESL;
-        __delay_us(20);
+        for(int i=0;i<100;i++){
+            ADCON0bits.GO_nDONE=1;
+            while(ADCON0bits.GO_nDONE);
+            current=(ADRESH<<8)+ADRESL;
+            if(current>max_current)max_current=current;
+            if(current<min_current)min_current=current;
+            __delay_us(190);
+        }
+        current=(max_current-min_current)/2;
+        if(aCTRL==1){
+            voltage=(500/1023)*aVOLTAGE;
+        }else if(bCTRL==1){
+            voltage=(500/1023)*bVOLTAGE;
+        }else if(cCTRL==1){
+            voltage=(500/1023)*cVOLTAGE;
+        }else{
+            voltage=0;
+        }
+        power=voltage*current;
         
+        Lcd_Clear();
+        Lcd_Set_Cursor(1,1);
+        Lcd_Write_String("volts:");
+
         
         RE0=1;
         __delay_ms(10);

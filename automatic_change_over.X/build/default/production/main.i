@@ -1732,12 +1732,130 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
 # 20 "main.c" 2
+# 29 "main.c"
+# 1 "./lcd.h" 1
 
+
+
+void Lcd_Port(char a)
+{
+ if(a & 1)
+  RD4 = 1;
+ else
+  RD4 = 0;
+
+ if(a & 2)
+  RD5 = 1;
+ else
+  RD5 = 0;
+
+ if(a & 4)
+  RD6 = 1;
+ else
+  RD6 = 0;
+
+ if(a & 8)
+  RD7 = 1;
+ else
+  RD7 = 0;
+}
+void Lcd_Cmd(char a)
+{
+ RD1 = 0;
+ Lcd_Port(a);
+ RD3 = 1;
+        _delay((unsigned long)((4)*(20000000/4000.0)));
+        RD3 = 0;
+}
+
+Lcd_Clear()
+{
+ Lcd_Cmd(0);
+ Lcd_Cmd(1);
+}
+
+void Lcd_Set_Cursor(char a, char b)
+{
+ char temp,z,y;
+ if(a == 1)
+ {
+   temp = 0x80 + b - 1;
+  z = temp>>4;
+  y = temp & 0x0F;
+  Lcd_Cmd(z);
+  Lcd_Cmd(y);
+ }
+ else if(a == 2)
+ {
+  temp = 0xC0 + b - 1;
+  z = temp>>4;
+  y = temp & 0x0F;
+  Lcd_Cmd(z);
+  Lcd_Cmd(y);
+ }
+}
+
+void Lcd_Init()
+{
+  Lcd_Port(0x00);
+   _delay((unsigned long)((20)*(20000000/4000.0)));
+  Lcd_Cmd(0x03);
+ _delay((unsigned long)((5)*(20000000/4000.0)));
+  Lcd_Cmd(0x03);
+ _delay((unsigned long)((11)*(20000000/4000.0)));
+  Lcd_Cmd(0x03);
+
+  Lcd_Cmd(0x02);
+  Lcd_Cmd(0x02);
+  Lcd_Cmd(0x08);
+  Lcd_Cmd(0x00);
+  Lcd_Cmd(0x0C);
+  Lcd_Cmd(0x00);
+  Lcd_Cmd(0x06);
+}
+
+void Lcd_Write_Char(char a)
+{
+   char temp,y;
+   temp = a&0x0F;
+   y = a&0xF0;
+   RD1 = 1;
+   Lcd_Port(y>>4);
+   RD3 = 1;
+   _delay((unsigned long)((40)*(20000000/4000000.0)));
+   RD3 = 0;
+   Lcd_Port(temp);
+   RD3 = 1;
+   _delay((unsigned long)((40)*(20000000/4000000.0)));
+   RD3 = 0;
+}
+
+void Lcd_Write_String(char *a)
+{
+ int i;
+ for(i=0;a[i]!='\0';i++)
+    Lcd_Write_Char(a[i]);
+}
+
+void Lcd_Shift_Right()
+{
+ Lcd_Cmd(0x01);
+ Lcd_Cmd(0x0C);
+}
+
+void Lcd_Shift_Left()
+{
+ Lcd_Cmd(0x01);
+ Lcd_Cmd(0x08);
+}
+# 29 "main.c" 2
 
 
 int aVOLTAGE,bVOLTAGE,cVOLTAGE;
-# 33 "main.c"
+# 41 "main.c"
 int voltage, current, power;
+int max_current=0;
+int min_current=0;
 
 
 
@@ -1746,6 +1864,7 @@ void aON();
 void bON();
 void cON();
 void OFF();
+void update_current(int *current, int *max_current, int *min_current);
 
 void main(void) {
     ADCON1bits.ADFM=1;
@@ -1762,6 +1881,15 @@ void main(void) {
     PORTB=0x00;
     TRISE0=0;
     RE0=0;
+    TRISD=0x00;
+    PORTD=0x00;
+    Lcd_Init();
+    Lcd_Set_Cursor(1,5);
+    Lcd_Write_String("Aeon-Atk");
+    Lcd_Set_Cursor(2,1);
+    _delay((unsigned long)((1000)*(20000000/4000.0)));
+    Lcd_Write_String("auto phase sysm");
+    _delay((unsigned long)((2000)*(20000000/4000.0)));
 
     while(1){
 
@@ -1817,8 +1945,30 @@ void main(void) {
         }
 
 
+        ADCON0bits.CHS=3;
+        for(int i=0;i<100;i++){
+            ADCON0bits.GO_nDONE=1;
+            while(ADCON0bits.GO_nDONE);
+            current=(ADRESH<<8)+ADRESL;
+            if(current>max_current)max_current=current;
+            if(current<min_current)min_current=current;
+            _delay((unsigned long)((190)*(20000000/4000000.0)));
+        }
+        current=(max_current-min_current)/2;
+        if(RB3==1){
+            voltage=(500/1023)*aVOLTAGE;
+        }else if(RB4==1){
+            voltage=(500/1023)*bVOLTAGE;
+        }else if(RB5==1){
+            voltage=(500/1023)*cVOLTAGE;
+        }else{
+            voltage=0;
+        }
+        power=voltage*current;
 
-
+        Lcd_Clear();
+        Lcd_Set_Cursor(1,1);
+        Lcd_Write_String("volts:");
 
 
         RE0=1;
