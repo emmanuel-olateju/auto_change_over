@@ -17,27 +17,35 @@
 [v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
 "97
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
+"116
+[v _Lcd_Write_Int Lcd_Write_Int `(i  1 e 2 0 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
+"43 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
 "6 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\pic\__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"54 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
+"53 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"167
+"174
 [v _aON aON `(v  1 e 1 0 ]
-"172
+"179
 [v _bON bON `(v  1 e 1 0 ]
-"177
+"184
 [v _cON cON `(v  1 e 1 0 ]
-"182
+"189
 [v _OFF OFF `(v  1 e 1 0 ]
 "216 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
@@ -133,27 +141,119 @@
 [v _max_current max_current `i  1 e 2 0 ]
 "43
 [v _min_current min_current `i  1 e 2 0 ]
-"54
+"53
 [v _main main `(v  1 e 1 0 ]
 {
-"134
-[v main@i i `i  1 a 2 0 ]
-"165
+"135
+[v main@i i `i  1 a 2 40 ]
+"172
 } 0
-"177
+"184
 [v _cON cON `(v  1 e 1 0 ]
 {
-"181
+"188
 } 0
-"172
+"179
 [v _bON bON `(v  1 e 1 0 ]
 {
-"176
+"183
 } 0
-"167
+"174
 [v _aON aON `(v  1 e 1 0 ]
 {
-"171
+"178
+} 0
+"10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+{
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+"13
+[v ___xxtofl@arg arg `ul  1 a 4 10 ]
+"12
+[v ___xxtofl@exp exp `uc  1 a 1 9 ]
+"10
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+[v ___xxtofl@val val `l  1 p 4 0 ]
+"15
+[v ___xxtofl@sign sign `uc  1 a 1 8 ]
+"44
+} 0
+"43 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+{
+"45
+[v ___fltol@exp1 exp1 `uc  1 a 1 36 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 35 ]
+"43
+[v ___fltol@f1 f1 `d  1 p 4 26 ]
+"70
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+{
+[s S512 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+"13
+[s S517 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S520 . 4 `l 1 i 4 0 `d 1 f 4 0 `S512 1 fAsBytes 4 0 `S517 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S520  1 a 4 20 ]
+"12
+[v ___flmul@grs grs `ul  1 a 4 14 ]
+[s S589 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+"14
+[u S592 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S589 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S592  1 a 2 24 ]
+"10
+[v ___flmul@bexp bexp `uc  1 a 1 19 ]
+"11
+[v ___flmul@aexp aexp `uc  1 a 1 18 ]
+"9
+[v ___flmul@sign sign `uc  1 a 1 13 ]
+"8
+[v ___flmul@b b `d  1 p 4 0 ]
+[v ___flmul@a a `d  1 p 4 4 ]
+"205
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+{
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v __Umul8_16@word_mpld word_mpld `ui  1 a 2 6 ]
+"5
+[v __Umul8_16@product product `ui  1 a 2 4 ]
+"4
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
+[v __Umul8_16@multiplicand multiplicand `uc  1 p 1 0 ]
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 8 ]
+"60
+} 0
+"189 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
+[v _OFF OFF `(v  1 e 1 0 ]
+{
+"193
+} 0
+"97 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X/lcd.h
+[v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
+{
+[v Lcd_Write_String@a a `*.24uc  1 a 1 wreg ]
+"99
+[v Lcd_Write_String@i i `i  1 a 2 5 ]
+"97
+[v Lcd_Write_String@a a `*.24uc  1 a 1 wreg ]
+"100
+[v Lcd_Write_String@a a `*.24uc  1 a 1 7 ]
+"102
+} 0
+"116
+[v _Lcd_Write_Int Lcd_Write_Int `(i  1 e 2 0 ]
+{
+"117
+[v Lcd_Write_Int@rem rem `[3]s  1 a 6 2 ]
+"118
+[v Lcd_Write_Int@d d `s  1 a 2 8 ]
+"116
+[v Lcd_Write_Int@a a `i  1 p 2 9 ]
+"151
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -178,24 +278,7 @@
 [v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "41
 } 0
-"182 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
-[v _OFF OFF `(v  1 e 1 0 ]
-{
-"186
-} 0
-"97 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X/lcd.h
-[v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
-{
-[v Lcd_Write_String@a a `*.24uc  1 a 1 wreg ]
-"99
-[v Lcd_Write_String@i i `i  1 a 2 5 ]
-"97
-[v Lcd_Write_String@a a `*.24uc  1 a 1 wreg ]
-"100
-[v Lcd_Write_String@a a `*.24uc  1 a 1 7 ]
-"102
-} 0
-"81
+"81 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X/lcd.h
 [v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
 {
 [v Lcd_Write_Char@a a `uc  1 a 1 wreg ]

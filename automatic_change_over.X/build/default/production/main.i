@@ -1848,6 +1848,43 @@ void Lcd_Shift_Left()
  Lcd_Cmd(0x01);
  Lcd_Cmd(0x08);
 }
+
+int Lcd_Write_Int(int a){
+    short int rem[3]={0,0,0};
+    short int d;
+    if(a<=9){
+        Lcd_Write_Char(a+48);
+        return 0;
+    }
+    else{
+        int i=0;
+        d=a/10;
+        rem[0]=(a-(d*10));
+        a=d;
+        if(a<=9){
+            Lcd_Write_Char(a+48);
+            Lcd_Write_Char(rem[0]+48);
+        }else{
+            d=a/10;
+            rem[1]=(a-(d*10));
+            a=d;
+            if(a<=9){
+                Lcd_Write_Char(a+48);
+                Lcd_Write_Char(rem[0]+48);
+                Lcd_Write_Char(rem[1]+48);
+            }else{
+                d=a/10;
+                rem[0]=(a-(d*10));
+                a=d;
+                Lcd_Write_Char(a+48);
+                Lcd_Write_Char(rem[0]+48);
+                Lcd_Write_Char(rem[1]+48);
+                Lcd_Write_Char(rem[2]+48);
+            }
+        }
+    }
+    return 0;
+}
 # 29 "main.c" 2
 
 
@@ -1864,7 +1901,6 @@ void aON();
 void bON();
 void cON();
 void OFF();
-void update_current(int *current, int *max_current, int *min_current);
 
 void main(void) {
     ADCON1bits.ADFM=1;
@@ -1887,9 +1923,9 @@ void main(void) {
     Lcd_Set_Cursor(1,5);
     Lcd_Write_String("Aeon-Atk");
     Lcd_Set_Cursor(2,1);
-    _delay((unsigned long)((1000)*(20000000/4000.0)));
+    _delay((unsigned long)((200)*(20000000/4000.0)));
     Lcd_Write_String("auto phase sysm");
-    _delay((unsigned long)((2000)*(20000000/4000.0)));
+    _delay((unsigned long)((400)*(20000000/4000.0)));
 
     while(1){
 
@@ -1925,7 +1961,7 @@ void main(void) {
             }else if((bVOLTAGE>=aVOLTAGE)&&(RB1==0)){
                 if(bVOLTAGE>cVOLTAGE)bON();
                 else if(RB2==0)cON();
-                else OFF;
+                else OFF();
             }
         }else if(RB7){
             if((aVOLTAGE<=bVOLTAGE)&&(RB0==0)){
@@ -1935,7 +1971,7 @@ void main(void) {
             }else if((bVOLTAGE<=aVOLTAGE)&&(RB1==0)){
                 if(bVOLTAGE<cVOLTAGE)bON();
                 else if(RB2==0)cON();
-                else OFF;
+                else OFF();
             }
         }else{
             if(RB0==0)aON();
@@ -1945,6 +1981,8 @@ void main(void) {
         }
 
 
+        Lcd_Clear();
+        Lcd_Set_Cursor(1,5);
         ADCON0bits.CHS=3;
         for(int i=0;i<100;i++){
             ADCON0bits.GO_nDONE=1;
@@ -1956,20 +1994,26 @@ void main(void) {
         }
         current=(max_current-min_current)/2;
         if(RB3==1){
-            voltage=(500/1023)*aVOLTAGE;
+            voltage=0.5*aVOLTAGE;
+            Lcd_Write_String("A-");
         }else if(RB4==1){
-            voltage=(500/1023)*bVOLTAGE;
+            voltage=0.5*bVOLTAGE;
+            Lcd_Write_String("B-");
         }else if(RB5==1){
-            voltage=(500/1023)*cVOLTAGE;
+            voltage=0.5*cVOLTAGE;
+            Lcd_Write_String("C-");
         }else{
             voltage=0;
+            Lcd_Write_String("OFF");
         }
         power=voltage*current;
-
-        Lcd_Clear();
-        Lcd_Set_Cursor(1,1);
+        Lcd_Set_Cursor(1,7);
+        Lcd_Write_Int(power);
+        Lcd_Write_String("Watts");
+        Lcd_Set_Cursor(2,1);
         Lcd_Write_String("volts:");
-
+        Lcd_Write_Int(voltage);
+        Lcd_Write_Char('V');
 
         RE0=1;
         _delay((unsigned long)((10)*(20000000/4000.0)));

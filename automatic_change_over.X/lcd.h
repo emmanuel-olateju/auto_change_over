@@ -113,3 +113,40 @@ void Lcd_Shift_Left()
 	Lcd_Cmd(0x08);
 }
 
+int Lcd_Write_Int(int a){
+    short int rem[3]={0,0,0};
+    short int d;
+    if(a<=9){
+        Lcd_Write_Char(a+48);
+        return 0;
+    }
+    else{
+        int i=0;
+        d=a/10;
+        rem[0]=(a-(d*10));
+        a=d;
+        if(a<=9){
+            Lcd_Write_Char(a+48);
+            Lcd_Write_Char(rem[0]+48);
+        }else{
+            d=a/10;
+            rem[1]=(a-(d*10));
+            a=d;
+            if(a<=9){
+                Lcd_Write_Char(a+48);
+                Lcd_Write_Char(rem[0]+48);
+                Lcd_Write_Char(rem[1]+48);
+            }else{
+                d=a/10;
+                rem[0]=(a-(d*10));
+                a=d;
+                Lcd_Write_Char(a+48);
+                Lcd_Write_Char(rem[0]+48);
+                Lcd_Write_Char(rem[1]+48);
+                Lcd_Write_Char(rem[2]+48);
+            }
+        }
+    }
+    return 0;
+}
+
