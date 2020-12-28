@@ -8,7 +8,7 @@
 # 2 "<built-in>" 2
 # 1 "main.c" 2
 # 11 "main.c"
-#pragma config FOSC = EXTRC
+#pragma config FOSC = HS
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
 #pragma config BOREN = ON
@@ -1736,6 +1736,104 @@ extern __bank0 __bit __timeout;
 # 1 "./lcd.h" 1
 
 
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 1 3
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\__size_t.h" 1 3
+
+
+
+typedef unsigned size_t;
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\__null.h" 1 3
+# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdarg.h" 1 3
+
+
+
+
+
+
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+# 11 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
+# 43 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 3
+struct __prbuf
+{
+ char * ptr;
+ void (* func)(char);
+};
+# 85 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\conio.h" 1 3
+
+
+
+
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\errno.h" 1 3
+# 29 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\errno.h" 3
+extern int errno;
+# 8 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\conio.h" 2 3
+
+
+
+
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+
+
+extern char * cgets(char *);
+extern void cputs(const char *);
+# 85 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+# 180 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 3
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+# 4 "./lcd.h" 2
 
 void Lcd_Port(char a)
 {
@@ -1849,58 +1947,45 @@ void Lcd_Shift_Left()
  Lcd_Cmd(0x08);
 }
 
-int Lcd_Write_Int(int a){
-    short int rem[3]={0,0,0};
-    short int d;
-    if(a<=9){
-        Lcd_Write_Char(a+48);
-        return 0;
-    }
-    else{
-        int i=0;
-        d=a/10;
-        rem[0]=(a-(d*10));
-        a=d;
-        if(a<=9){
-            Lcd_Write_Char(a+48);
-            Lcd_Write_Char(rem[0]+48);
-        }else{
-            d=a/10;
-            rem[1]=(a-(d*10));
-            a=d;
-            if(a<=9){
-                Lcd_Write_Char(a+48);
-                Lcd_Write_Char(rem[0]+48);
-                Lcd_Write_Char(rem[1]+48);
-            }else{
-                d=a/10;
-                rem[0]=(a-(d*10));
-                a=d;
-                Lcd_Write_Char(a+48);
-                Lcd_Write_Char(rem[0]+48);
-                Lcd_Write_Char(rem[1]+48);
-                Lcd_Write_Char(rem[2]+48);
-            }
-        }
-    }
-    return 0;
+void Lcd_Write_Int(int num){
+    char number[8];
+    sprintf(number,"%d",num);
+    Lcd_Write_String(number);
 }
 # 29 "main.c" 2
 
 
+
 int aVOLTAGE,bVOLTAGE,cVOLTAGE;
-# 41 "main.c"
-int voltage, current, power;
-int max_current=0;
-int min_current=0;
+# 45 "main.c"
+short int aDANGER;
+short int bDANGER;
+short int cDANGER;
+int danger;
 
 
+unsigned int voltage, current, power;
+short int cLoop=0;
 
 
+enum state {iS,hL,pS3,pS2,pS1,mP3,mP2,mP1,aP,bP,cP,off,cM,pC,lcd,BLE}nextState;
+enum state nextState=iS;
+void initialState();
+void hotList();
+void powerSaving3();
+void powerSaving2();
+void powerSaving1();
+void maximumPower3();
+void maximumPower2();
+void maximumPower1();
 void aON();
 void bON();
 void cON();
 void OFF();
+void currentMeasurement();
+void powerCalculation();
+void LCD();
+void ble();
 
 void main(void) {
     ADCON1bits.ADFM=1;
@@ -1913,7 +1998,7 @@ void main(void) {
     ADCON1bits.PCFG0=0;
     TRISA=0x0F;
     ADCON0bits.ADON=1;
-    TRISB=0xc0;
+    TRISB=0xC0;
     PORTB=0x00;
     TRISE0=0;
     RE0=0;
@@ -1923,97 +2008,32 @@ void main(void) {
     Lcd_Set_Cursor(1,5);
     Lcd_Write_String("Aeon-Atk");
     Lcd_Set_Cursor(2,1);
-    _delay((unsigned long)((200)*(20000000/4000.0)));
     Lcd_Write_String("auto phase sysm");
-    _delay((unsigned long)((400)*(20000000/4000.0)));
+    _delay((unsigned long)((100)*(20000000/4000.0)));
+    Lcd_Clear();
+    Lcd_Set_Cursor(1,5);
+    Lcd_Write_String("loading");
+    _delay((unsigned long)((100)*(20000000/4000.0)));
+    Lcd_Clear();
+    nextState=hL;
 
     while(1){
-
-        _delay((unsigned long)((20)*(20000000/4000000.0)));
-        ADCON0bits.CHS=0;
-        ADCON0bits.GO_nDONE=1;
-        while(ADCON0bits.GO_nDONE);
-        aVOLTAGE=(ADRESH<<8)+ADRESL;
-        if((aVOLTAGE>=614)||(aVOLTAGE<=368))RB0=1;
-        else RB0=0;
-        _delay((unsigned long)((20)*(20000000/4000000.0)));
-        ADCON0bits.CHS=1;
-        ADCON0bits.GO_nDONE=1;
-        while(ADCON0bits.GO_nDONE);
-        bVOLTAGE=(ADRESH<<8)+ADRESL;
-        if((bVOLTAGE>=614)||(bVOLTAGE<=368))RB1=1;
-        else RB1=0;
-        _delay((unsigned long)((20)*(20000000/4000000.0)));
-        ADCON0bits.CHS=2;
-        ADCON0bits.GO_nDONE=1;
-        while(ADCON0bits.GO_nDONE);
-        cVOLTAGE=(ADRESH<<8)+ADRESL;
-        if((cVOLTAGE>=720)||(cVOLTAGE<=368))RB2=1;
-        else RB2=0;
-        _delay((unsigned long)((20)*(20000000/4000000.0)));
-
-
-        if(RB6){
-            if((aVOLTAGE>=bVOLTAGE)&&(RB0==0)){
-                if(aVOLTAGE>cVOLTAGE)aON();
-                else if(RB2==0)cON();
-                else OFF();
-            }else if((bVOLTAGE>=aVOLTAGE)&&(RB1==0)){
-                if(bVOLTAGE>cVOLTAGE)bON();
-                else if(RB2==0)cON();
-                else OFF();
-            }
-        }else if(RB7){
-            if((aVOLTAGE<=bVOLTAGE)&&(RB0==0)){
-                if(aVOLTAGE<cVOLTAGE)aON();
-                else if(RB2==0)cON();
-                else OFF();
-            }else if((bVOLTAGE<=aVOLTAGE)&&(RB1==0)){
-                if(bVOLTAGE<cVOLTAGE)bON();
-                else if(RB2==0)cON();
-                else OFF();
-            }
-        }else{
-            if(RB0==0)aON();
-            else if(RB1==0)bON();
-            else if(RB2==0)cON();
-            else OFF();
-        }
-
-
-        Lcd_Clear();
-        Lcd_Set_Cursor(1,5);
-        ADCON0bits.CHS=3;
-        for(int i=0;i<100;i++){
-            ADCON0bits.GO_nDONE=1;
-            while(ADCON0bits.GO_nDONE);
-            current=(ADRESH<<8)+ADRESL;
-            if(current>max_current)max_current=current;
-            if(current<min_current)min_current=current;
-            _delay((unsigned long)((190)*(20000000/4000000.0)));
-        }
-        current=(max_current-min_current)/2;
-        if(RB3==1){
-            voltage=0.5*aVOLTAGE;
-            Lcd_Write_String("A-");
-        }else if(RB4==1){
-            voltage=0.5*bVOLTAGE;
-            Lcd_Write_String("B-");
-        }else if(RB5==1){
-            voltage=0.5*cVOLTAGE;
-            Lcd_Write_String("C-");
-        }else{
-            voltage=0;
-            Lcd_Write_String("OFF");
-        }
-        power=voltage*current;
-        Lcd_Set_Cursor(1,7);
-        Lcd_Write_Int(power);
-        Lcd_Write_String("Watts");
-        Lcd_Set_Cursor(2,1);
-        Lcd_Write_String("volts:");
-        Lcd_Write_Int(voltage);
-        Lcd_Write_Char('V');
+        if(nextState==hL)hotList();
+        Lcd_Set_Cursor(1,16);
+        if(nextState==pS3)powerSaving3();
+        else if(nextState==pS2)powerSaving2();
+        else if(nextState==pS1)powerSaving1();
+        else if(nextState==mP3)maximumPower3();
+        else if(nextState==mP2)maximumPower2();
+        else if(nextState==mP1)maximumPower1();
+        else if(nextState==aP)aON();
+        else if(nextState==bP)bON();
+        else if(nextState==cP)cON();
+        else if(nextState==off)OFF();
+        if(nextState==cM)currentMeasurement();
+        if(nextState==pC)nextState=lcd;
+        if(nextState==lcd)LCD();
+        if(nextState==BLE)ble();
 
         RE0=1;
         _delay((unsigned long)((10)*(20000000/4000.0)));
@@ -2022,24 +2042,206 @@ void main(void) {
     }
     return;
 }
-
+void hotList(){
+    _delay((unsigned long)((20)*(20000000/4000000.0)));
+    ADCON0bits.CHS=0;
+    ADCON0bits.GO_nDONE=1;
+    while(ADCON0bits.GO_nDONE);
+    aVOLTAGE=(ADRESH<<8)+ADRESL;
+    if((aVOLTAGE>=614)||(aVOLTAGE<=368))aDANGER=1;
+    else aDANGER=0;
+    _delay((unsigned long)((20)*(20000000/4000000.0)));
+    ADCON0bits.CHS=1;
+    ADCON0bits.GO_nDONE=1;
+    while(ADCON0bits.GO_nDONE);
+    bVOLTAGE=(ADRESH<<8)+ADRESL;
+    if((bVOLTAGE>=614)||(bVOLTAGE<=368))bDANGER=1;
+    else bDANGER=0;
+    _delay((unsigned long)((20)*(20000000/4000000.0)));
+    ADCON0bits.CHS=2;
+    ADCON0bits.GO_nDONE=1;
+    while(ADCON0bits.GO_nDONE);
+    cVOLTAGE=(ADRESH<<8)+ADRESL;
+    if((cVOLTAGE>=614)||(cVOLTAGE<=368))cDANGER=1;
+    else cDANGER=0;
+    _delay((unsigned long)((20)*(20000000/4000000.0)));
+    danger=0;
+    danger=(aDANGER<<2)|(bDANGER<<1)|(cDANGER);
+    Lcd_Clear();
+    if(danger==7)nextState=off;
+    else{
+       if(RB7==1){
+           Lcd_Set_Cursor(1,1);
+           Lcd_Write_String("pS");
+           if(danger==0)nextState=pS3;
+           else if((danger==1)||(danger==2)||(danger==4))nextState=pS2;
+           else if((danger==3)||(danger==6)||(danger==5))nextState=pS1;
+       }else if(RB6==1){
+           Lcd_Set_Cursor(1,1);
+           Lcd_Write_String("mP");
+           if(danger==0)nextState=mP3;
+           else if((danger==1)||(danger==2)||(danger==4))nextState=mP2;
+           else if((danger==3)||(danger==6)||(danger==5))nextState=mP1;
+       }else{
+           Lcd_Set_Cursor(1,1);
+           Lcd_Write_String("p ");
+           if(aDANGER==0)nextState=aP;
+           else if(aDANGER==0)nextState=bP;
+           else if(cDANGER==0)nextState=cP;
+       }
+    }
+}
+void powerSaving3(){
+    if(aVOLTAGE==bVOLTAGE){
+        if(cVOLTAGE<aVOLTAGE)cON();
+        else aON();
+    }else if(bVOLTAGE==cVOLTAGE){
+        if(aVOLTAGE<bVOLTAGE)aON();
+        else bON();
+    }else if(aVOLTAGE==cVOLTAGE){
+        if(bVOLTAGE<aVOLTAGE)bON();
+        else aON();
+    }else{
+        if((aVOLTAGE<bVOLTAGE)&&(aVOLTAGE<cVOLTAGE))aON;
+        else if((bVOLTAGE<cVOLTAGE)&&(bVOLTAGE<aVOLTAGE))bON();
+        else if((cVOLTAGE<bVOLTAGE)&&(cVOLTAGE<aVOLTAGE))cON();
+    }
+    nextState=cM;
+}
+void powerSaving2(){
+    switch(danger){
+        case 1:
+            if(aVOLTAGE<=bVOLTAGE)aON();
+            else bON();
+            break;
+        case 2:
+            if(aVOLTAGE<=cVOLTAGE)aON();
+            else cON();
+            break;
+        case 4:
+            if(bVOLTAGE<=cVOLTAGE)bON();
+            else cON();
+            break;
+    }
+    nextState=cM;
+}
+void powerSaving1(){
+    switch(danger){
+        case 3:
+            aON();
+            break;
+        case 6:
+            cON();
+            break;
+        case 5:
+            bON();
+            break;
+    }
+    nextState=cM;
+}
+void maximumPower3(){
+    if(aVOLTAGE==bVOLTAGE){
+        if(cVOLTAGE>aVOLTAGE)cON();
+        else aON();
+    }else if(bVOLTAGE==cVOLTAGE){
+        if(aVOLTAGE>bVOLTAGE)aON();
+        else bON();
+    }else if(aVOLTAGE==cVOLTAGE){
+        if(bVOLTAGE>aVOLTAGE)bON();
+        else aON();
+    }else{
+        if((aVOLTAGE>bVOLTAGE)&&(aVOLTAGE>cVOLTAGE))aON;
+        else if((bVOLTAGE>cVOLTAGE)&&(bVOLTAGE>aVOLTAGE))bON();
+        else if((cVOLTAGE>bVOLTAGE)&&(cVOLTAGE>aVOLTAGE))cON();
+    }
+    nextState=cM;
+}
+void maximumPower2(){
+    switch(danger){
+        case 1:
+            if(aVOLTAGE>=bVOLTAGE)aON();
+            else bON();
+            break;
+        case 2:
+            if(aVOLTAGE>=cVOLTAGE)aON();
+            else cON();
+            break;
+        case 4:
+            if(bVOLTAGE>=cVOLTAGE)bON();
+            else cON();
+            break;
+    }
+    nextState=cM;
+}
+void maximumPower1(){
+    switch(danger){
+        case 3:
+            aON();
+            break;
+        case 6:
+            cON();
+            break;
+        case 5:
+            bON();
+            break;
+    }
+    nextState=cM;
+}
 void aON(){
     RB3=1;
     RB4=0;
     RB5=0;
+    voltage=aVOLTAGE;
+    Lcd_Write_Char('A');
+    nextState=cM;
 }
 void bON(){
     RB3=0;
     RB4=1;
     RB5=0;
+    voltage=bVOLTAGE;
+    Lcd_Write_Char('B');
+    nextState=cM;
 }
 void cON(){
     RB3=0;
     RB4=0;
     RB5=1;
+    voltage=cVOLTAGE;
+    Lcd_Write_Char('C');
+    nextState=cM;
 }
 void OFF(){
     RB3=0;
     RB4=0;
     RB5=0;
+    voltage=0;
+    Lcd_Set_Cursor(1,16);
+    Lcd_Write_Char('-');
+    nextState=cM;
+}
+void currentMeasurement(){
+    ADCON0bits.CHS=3;
+    ADCON0bits.GO_nDONE=1;
+    while(ADCON0bits.GO_nDONE==1);
+    current=(ADRESH<<8)+ADRESL;
+    if(current>=512)current=((0.005*current)-2.5)/0.066;
+    else current=(2.5-(0.005*current))/0.066;
+    nextState=pC;
+}
+void LCD(){
+    Lcd_Set_Cursor(2,1);
+    Lcd_Write_Int(0.5*voltage);
+    Lcd_Write_String("V");
+    Lcd_Set_Cursor(2,7);
+    Lcd_Write_Int(current);
+    Lcd_Write_String("A");
+    Lcd_Set_Cursor(2,11);
+    power=current*voltage;
+    Lcd_Write_Int(power);
+    Lcd_Write_String("W");
+    nextState=BLE;
+}
+void ble(){
+    nextState=hL;
 }
