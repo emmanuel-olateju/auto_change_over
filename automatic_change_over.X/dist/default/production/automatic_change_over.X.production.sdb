@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F877A ]
 [d frameptr 0 ]
-"55 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
+"64 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
 [e E942 state `uc
 iS 0
 hL 1
@@ -64,35 +64,35 @@ BLE 15
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"74 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
+"83 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"129
+"137
 [v _hotList hotList `(v  1 e 1 0 ]
-"178
+"186
 [v _powerSaving3 powerSaving3 `(v  1 e 1 0 ]
-"195
+"203
 [v _powerSaving2 powerSaving2 `(v  1 e 1 0 ]
-"212
+"220
 [v _powerSaving1 powerSaving1 `(v  1 e 1 0 ]
-"226
+"234
 [v _maximumPower3 maximumPower3 `(v  1 e 1 0 ]
-"243
+"251
 [v _maximumPower2 maximumPower2 `(v  1 e 1 0 ]
-"260
+"268
 [v _maximumPower1 maximumPower1 `(v  1 e 1 0 ]
-"274
-[v _aON aON `(v  1 e 1 0 ]
 "282
+[v _aON aON `(v  1 e 1 0 ]
+"289
 [v _bON bON `(v  1 e 1 0 ]
-"290
+"296
 [v _cON cON `(v  1 e 1 0 ]
-"298
+"303
 [v _OFF OFF `(v  1 e 1 0 ]
-"307
+"312
 [v _currentMeasurement currentMeasurement `(v  1 e 1 0 ]
-"316
+"324
 [v _LCD LCD `(v  1 e 1 0 ]
-"329
+"337
 [v _ble ble `(v  1 e 1 0 ]
 "216 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
@@ -144,6 +144,8 @@ BLE 15
 ]
 [u S67 . 1 `S57 1 . 1 0 `S62 1 . 1 0 ]
 [v _ADCON1bits ADCON1bits `VES67  1 e 1 @159 ]
+"2680
+[v _RB2 RB2 `VEb  1 e 0 @50 ]
 "2683
 [v _RB3 RB3 `VEb  1 e 0 @51 ]
 "2686
@@ -172,88 +174,88 @@ BLE 15
 [v _TRISE0 TRISE0 `VEb  1 e 0 @1096 ]
 "358 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\doprnt.c
 [v _dpowers dpowers `DC[5]ui  1 s 10 dpowers ]
-"32 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
+"40 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
 [v _aVOLTAGE aVOLTAGE `i  1 e 2 0 ]
 [v _bVOLTAGE bVOLTAGE `i  1 e 2 0 ]
 [v _cVOLTAGE cVOLTAGE `i  1 e 2 0 ]
-"45
+"54
 [v _aDANGER aDANGER `s  1 e 2 0 ]
-"46
+"55
 [v _bDANGER bDANGER `s  1 e 2 0 ]
-"47
+"56
 [v _cDANGER cDANGER `s  1 e 2 0 ]
-"48
+"57
 [v _danger danger `i  1 e 2 0 ]
-"51
+"60
 [v _voltage voltage `ui  1 e 2 0 ]
 [v _current current `ui  1 e 2 0 ]
 [v _power power `ui  1 e 2 0 ]
-"56
+"65
 [v _nextState nextState `E942  1 e 1 0 ]
-"74
+"83
 [v _main main `(v  1 e 1 0 ]
 {
-"128
+"136
 } 0
-"178
+"186
 [v _powerSaving3 powerSaving3 `(v  1 e 1 0 ]
 {
-"194
+"202
 } 0
-"195
+"203
 [v _powerSaving2 powerSaving2 `(v  1 e 1 0 ]
 {
-"211
+"219
 } 0
-"212
+"220
 [v _powerSaving1 powerSaving1 `(v  1 e 1 0 ]
 {
-"225
+"233
 } 0
-"226
+"234
 [v _maximumPower3 maximumPower3 `(v  1 e 1 0 ]
 {
-"242
+"250
 } 0
-"243
+"251
 [v _maximumPower2 maximumPower2 `(v  1 e 1 0 ]
 {
-"259
+"267
 } 0
-"260
+"268
 [v _maximumPower1 maximumPower1 `(v  1 e 1 0 ]
-{
-"273
-} 0
-"290
-[v _cON cON `(v  1 e 1 0 ]
-{
-"297
-} 0
-"282
-[v _bON bON `(v  1 e 1 0 ]
-{
-"289
-} 0
-"274
-[v _aON aON `(v  1 e 1 0 ]
 {
 "281
 } 0
-"129
+"296
+[v _cON cON `(v  1 e 1 0 ]
+{
+"302
+} 0
+"289
+[v _bON bON `(v  1 e 1 0 ]
+{
+"295
+} 0
+"282
+[v _aON aON `(v  1 e 1 0 ]
+{
+"288
+} 0
+"137
 [v _hotList hotList `(v  1 e 1 0 ]
 {
-"177
+"185
 } 0
 "36 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X/lcd.h
 [v _Lcd_Clear Lcd_Clear `(i  1 e 2 0 ]
 {
 "40
 } 0
-"307 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
+"312 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
 [v _currentMeasurement currentMeasurement `(v  1 e 1 0 ]
 {
-"315
+"323
 } 0
 "242 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcadd.c
 [v ___flsub __flsub `(d  1 e 4 0 ]
@@ -298,25 +300,25 @@ BLE 15
 [v ___fldiv@b b `d  1 p 4 58 ]
 "185
 } 0
-"329 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
+"337 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
 [v _ble ble `(v  1 e 1 0 ]
 {
-"331
+"339
 } 0
-"298
+"303
 [v _OFF OFF `(v  1 e 1 0 ]
 {
-"306
+"311
 } 0
 "63 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X/lcd.h
 [v _Lcd_Init Lcd_Init `(v  1 e 1 0 ]
 {
 "80
 } 0
-"316 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
+"324 C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
 [v _LCD LCD `(v  1 e 1 0 ]
 {
-"328
+"336
 } 0
 "10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
@@ -356,17 +358,17 @@ BLE 15
 "8 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S611 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S612 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S616 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S619 . 4 `l 1 i 4 0 `d 1 f 4 0 `S611 1 fAsBytes 4 0 `S616 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S619  1 a 4 20 ]
+[s S617 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S620 . 4 `l 1 i 4 0 `d 1 f 4 0 `S612 1 fAsBytes 4 0 `S617 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S620  1 a 4 20 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 14 ]
-[s S688 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S689 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S691 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S688 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S691  1 a 2 24 ]
+[u S692 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S689 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S692  1 a 2 24 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 19 ]
 "11

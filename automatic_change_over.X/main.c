@@ -6,6 +6,14 @@
  * three phase automatic change over system with instantaneous power consumption LCD display
  */
 
+/*
+ * change the following lines 
+ * line 105 to __delay_ms(1000);
+ * line 109 to __delay_ms(500);
+ * line 130 to __delay_ms(500);
+ * line 132 to __delay_ms(500);
+ * line 320 to __delay_ms(200);
+ */
 
 // CONFIG
 #pragma config FOSC = HS     // Oscillator Selection bits (RC oscillator)
@@ -35,6 +43,7 @@ int aVOLTAGE,bVOLTAGE,cVOLTAGE; /*aVOLTAGE on RA0
                                 */
 #define max_power RB6
 #define power_saving RB7
+#define acsReset RB2
 
 //OUTPUTS
 #define aCTRL RB3
@@ -103,7 +112,6 @@ void main(void) {
     
     while(1){
         if(nextState==hL)hotList();
-        Lcd_Set_Cursor(1,16);
         if(nextState==pS3)powerSaving3();
         else if(nextState==pS2)powerSaving2();
         else if(nextState==pS1)powerSaving1();
@@ -118,7 +126,7 @@ void main(void) {
         if(nextState==pC)nextState=lcd;//call power Calculation function and make nextState hotList
         if(nextState==lcd)LCD();
         if(nextState==BLE)ble();
-        
+        acsReset=0;
         RE0=1;
         __delay_ms(10);
         RE0=0;
@@ -276,7 +284,6 @@ void aON(){
     bCTRL=0;
     cCTRL=0;
     voltage=aVOLTAGE;
-    Lcd_Write_Char('A');
     nextState=cM;
 }
 void bON(){
@@ -284,7 +291,6 @@ void bON(){
     bCTRL=1;
     cCTRL=0;
     voltage=bVOLTAGE;
-    Lcd_Write_Char('B');
     nextState=cM;
 }
 void cON(){
@@ -292,7 +298,6 @@ void cON(){
     bCTRL=0;
     cCTRL=1;
     voltage=cVOLTAGE;
-    Lcd_Write_Char('C');
     nextState=cM;
 }
 void OFF(){
@@ -305,6 +310,7 @@ void OFF(){
     nextState=cM;
 }
 void currentMeasurement(){
+    acsReset=1;
     ADCON0bits.CHS=3;
     ADCON0bits.GO_nDONE=1;
     while(ADCON0bits.GO_nDONE==1);
@@ -312,6 +318,8 @@ void currentMeasurement(){
     if(current>=512)current=((0.005*current)-2.5)/0.066;
     else current=(2.5-(0.005*current))/0.066;
     nextState=pC;
+    __delay_us(200);
+    acsReset=0;
 }
 void LCD(){
     Lcd_Set_Cursor(2,1);

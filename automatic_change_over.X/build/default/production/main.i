@@ -7,7 +7,7 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 11 "main.c"
+# 19 "main.c"
 #pragma config FOSC = HS
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -1731,8 +1731,8 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 20 "main.c" 2
-# 29 "main.c"
+# 28 "main.c" 2
+# 37 "main.c"
 # 1 "./lcd.h" 1
 
 
@@ -1952,12 +1952,12 @@ void Lcd_Write_Int(int num){
     sprintf(number,"%d",num);
     Lcd_Write_String(number);
 }
-# 29 "main.c" 2
+# 37 "main.c" 2
 
 
 
 int aVOLTAGE,bVOLTAGE,cVOLTAGE;
-# 45 "main.c"
+# 54 "main.c"
 short int aDANGER;
 short int bDANGER;
 short int cDANGER;
@@ -2019,7 +2019,6 @@ void main(void) {
 
     while(1){
         if(nextState==hL)hotList();
-        Lcd_Set_Cursor(1,16);
         if(nextState==pS3)powerSaving3();
         else if(nextState==pS2)powerSaving2();
         else if(nextState==pS1)powerSaving1();
@@ -2034,7 +2033,7 @@ void main(void) {
         if(nextState==pC)nextState=lcd;
         if(nextState==lcd)LCD();
         if(nextState==BLE)ble();
-
+        RB2=0;
         RE0=1;
         _delay((unsigned long)((10)*(20000000/4000.0)));
         RE0=0;
@@ -2192,7 +2191,6 @@ void aON(){
     RB4=0;
     RB5=0;
     voltage=aVOLTAGE;
-    Lcd_Write_Char('A');
     nextState=cM;
 }
 void bON(){
@@ -2200,7 +2198,6 @@ void bON(){
     RB4=1;
     RB5=0;
     voltage=bVOLTAGE;
-    Lcd_Write_Char('B');
     nextState=cM;
 }
 void cON(){
@@ -2208,7 +2205,6 @@ void cON(){
     RB4=0;
     RB5=1;
     voltage=cVOLTAGE;
-    Lcd_Write_Char('C');
     nextState=cM;
 }
 void OFF(){
@@ -2221,6 +2217,7 @@ void OFF(){
     nextState=cM;
 }
 void currentMeasurement(){
+    RB2=1;
     ADCON0bits.CHS=3;
     ADCON0bits.GO_nDONE=1;
     while(ADCON0bits.GO_nDONE==1);
@@ -2228,6 +2225,8 @@ void currentMeasurement(){
     if(current>=512)current=((0.005*current)-2.5)/0.066;
     else current=(2.5-(0.005*current))/0.066;
     nextState=pC;
+    _delay((unsigned long)((200)*(20000000/4000000.0)));
+    RB2=0;
 }
 void LCD(){
     Lcd_Set_Cursor(2,1);
