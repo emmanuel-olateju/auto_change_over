@@ -11,9 +11,6 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\PETRON~1\AppData\Local\Temp\s48.o
-end_init CODE 0 0 0 3 2
-config CONFIG 0 2007 2007 1 2
 $dist/default/production\automatic_change_over.X.production.o
 cinit CODE 0 7F3 7F3 D 2
 text1 CODE 0 9BB 9BB C6 2
@@ -56,6 +53,9 @@ cstackBANK1 BANK1 1 A0 A0 1A 1
 bssBANK1 BANK1 1 BA BA 17 1
 strings STRING 0 1000 1000 4D 2
 clrtext CODE 0 1347 1347 8 2
+$C:\Users\PETRON~1\AppData\Local\Temp\s4ak.o
+end_init CODE 0 0 0 3 2
+config CONFIG 0 2007 2007 1 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -109,16 +109,16 @@ STRING 1800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\automatic_change_over.X.production.o
-7F3 cinit CODE >606:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-7F3 cinit CODE >609:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-7F3 cinit CODE >668:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-7F4 cinit CODE >669:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-7F5 cinit CODE >670:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-7F6 cinit CODE >671:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-7F7 cinit CODE >672:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-7FC cinit CODE >678:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-7FC cinit CODE >680:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-7FD cinit CODE >681:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
+7F3 cinit CODE >606:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+7F3 cinit CODE >609:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+7F3 cinit CODE >668:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+7F4 cinit CODE >669:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+7F5 cinit CODE >670:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+7F6 cinit CODE >671:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+7F7 cinit CODE >672:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+7FC cinit CODE >678:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+7FC cinit CODE >680:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+7FD cinit CODE >681:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
 13C6 text33 CODE >5:C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X/lcd.h
 13C7 text33 CODE >7:C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X/lcd.h
 13CB text33 CODE >8:C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X/lcd.h
@@ -842,16 +842,16 @@ DCB maintext CODE >130:C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_o
 DCC maintext CODE >131:C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
 DD7 maintext CODE >132:C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
 DDA maintext CODE >133:C:\Users\peTron_Quantinity\Documents\GitHub\auto_change_over\automatic_change_over.X\main.c
-1347 clrtext CODE >655:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-1347 clrtext CODE >656:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-1348 clrtext CODE >657:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-1348 clrtext CODE >658:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-1349 clrtext CODE >659:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-134A clrtext CODE >660:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-134B clrtext CODE >661:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-134C clrtext CODE >662:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-134D clrtext CODE >663:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
-134E clrtext CODE >664:C:\Users\PETRON~1\AppData\Local\Temp\s48.s
+1347 clrtext CODE >655:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+1347 clrtext CODE >656:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+1348 clrtext CODE >657:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+1348 clrtext CODE >658:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+1349 clrtext CODE >659:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+134A clrtext CODE >660:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+134B clrtext CODE >661:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+134C clrtext CODE >662:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+134D clrtext CODE >663:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
+134E clrtext CODE >664:C:\Users\PETRON~1\AppData\Local\Temp\s4ak.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -881,11 +881,11 @@ __end_of_Lcd_Init 2D98 0 CODE 0 text18 dist/default/production\automatic_change_
 __end_of_Lcd_Port 27D0 0 CODE 0 text33 dist/default/production\automatic_change_over.X.production.o
 _currentMeasurement 16D2 0 CODE 0 text12 dist/default/production\automatic_change_over.X.production.o
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\PETRON~1\AppData\Local\Temp\s48.o
+___sp 0 0 STACK 2 stack C:\Users\PETRON~1\AppData\Local\Temp\s4ak.o
 _main 1902 0 CODE 0 maintext dist/default/production\automatic_change_over.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\automatic_change_over.X.production.o
 _Lcd_Write_Char 295A 0 CODE 0 text30 dist/default/production\automatic_change_over.X.production.o
-start 0 0 CODE 0 init C:\Users\PETRON~1\AppData\Local\Temp\s48.o
+start 0 0 CODE 0 init C:\Users\PETRON~1\AppData\Local\Temp\s4ak.o
 ___flmul@aexp 32 0 BANK0 1 cstackBANK0 dist/default/production\automatic_change_over.X.production.o
 ___flmul@bexp 33 0 BANK0 1 cstackBANK0 dist/default/production\automatic_change_over.X.production.o
 ___flmul@prod 34 0 BANK0 1 cstackBANK0 dist/default/production\automatic_change_over.X.production.o
@@ -904,12 +904,12 @@ Lcd_Port@a 70 0 COMMON 1 cstackCOMMON dist/default/production\automatic_change_o
 Lcd_Write_Char@temp 72 0 COMMON 1 cstackCOMMON dist/default/production\automatic_change_over.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
 __end_of_hotList 2000 0 CODE 0 text10 dist/default/production\automatic_change_over.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\PETRON~1\AppData\Local\Temp\s48.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\PETRON~1\AppData\Local\Temp\s48.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\PETRON~1\AppData\Local\Temp\s48.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\PETRON~1\AppData\Local\Temp\s48.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\PETRON~1\AppData\Local\Temp\s48.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\PETRON~1\AppData\Local\Temp\s48.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\PETRON~1\AppData\Local\Temp\s4ak.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\PETRON~1\AppData\Local\Temp\s4ak.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\PETRON~1\AppData\Local\Temp\s4ak.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\PETRON~1\AppData\Local\Temp\s4ak.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\PETRON~1\AppData\Local\Temp\s4ak.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\PETRON~1\AppData\Local\Temp\s4ak.o
 __size_of_powerSaving1 0 0 ABS 0 - dist/default/production\automatic_change_over.X.production.o
 __size_of_powerSaving2 0 0 ABS 0 - dist/default/production\automatic_change_over.X.production.o
 __size_of_powerSaving3 0 0 ABS 0 - dist/default/production\automatic_change_over.X.production.o
@@ -947,8 +947,8 @@ __end_of___lwdiv 2AD8 0 CODE 0 text28 dist/default/production\automatic_change_o
 __end_of___lwmod 1076 0 CODE 0 text27 dist/default/production\automatic_change_over.X.production.o
 _bDANGER C4 0 BANK1 1 bssBANK1 dist/default/production\automatic_change_over.X.production.o
 __Umul8_16@multiplicand 70 0 COMMON 1 cstackCOMMON dist/default/production\automatic_change_over.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\PETRON~1\AppData\Local\Temp\s48.o
-___stacklo 0 0 ABS 0 - C:\Users\PETRON~1\AppData\Local\Temp\s48.o
+___stackhi 0 0 ABS 0 - C:\Users\PETRON~1\AppData\Local\Temp\s4ak.o
+___stacklo 0 0 ABS 0 - C:\Users\PETRON~1\AppData\Local\Temp\s4ak.o
 _dpowers 2020 0 STRING 0 strings dist/default/production\automatic_change_over.X.production.o
 ___lwdiv@quotient 75 0 COMMON 1 cstackCOMMON dist/default/production\automatic_change_over.X.production.o
 ___fladd@a 3E 0 BANK0 1 cstackBANK0 dist/default/production\automatic_change_over.X.production.o
@@ -969,7 +969,7 @@ __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\automatic_change
 __pcstackBANK1 A0 0 BANK1 1 cstackBANK1 dist/default/production\automatic_change_over.X.production.o
 _TRISE0 448 0 ABS 0 - dist/default/production\automatic_change_over.X.production.o
 __size_of_Lcd_Cmd 0 0 ABS 0 - dist/default/production\automatic_change_over.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\PETRON~1\AppData\Local\Temp\s48.o
+___int_sp 0 0 STACK 2 stack C:\Users\PETRON~1\AppData\Local\Temp\s4ak.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -1058,7 +1058,7 @@ __size_of_Lcd_Write_String 0 0 ABS 0 - dist/default/production\automatic_change_
 __stringtab 2000 0 STRING 0 strings dist/default/production\automatic_change_over.X.production.o
 Lcd_Write_String@a 75 0 COMMON 1 cstackCOMMON dist/default/production\automatic_change_over.X.production.o
 Lcd_Write_String@i 7A 0 COMMON 1 cstackCOMMON dist/default/production\automatic_change_over.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\PETRON~1\AppData\Local\Temp\s48.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\PETRON~1\AppData\Local\Temp\s4ak.o
 __size_of_Lcd_Clear 0 0 ABS 0 - dist/default/production\automatic_change_over.X.production.o
 _cDANGER C2 0 BANK1 1 bssBANK1 dist/default/production\automatic_change_over.X.production.o
 __end_of___xxtofl 11EA 0 CODE 0 text20 dist/default/production\automatic_change_over.X.production.o
